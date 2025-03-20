@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+{% block content %}
+<section class="product-banner container my-5">
+    <a href="{% url 'full_product' 1 %}" class="text-decoration-none" style="color: inherit;">
+    <div class="row align-items-center bg-light rounded shadow p-4" >
+        <div class="col-lg-10">
+            <h2 class="text-uppercase fw-bold">FOOTBALL</h2>
+            <h3 class="text-uppercase fw-bold">SPORTS</h3>
+            <h3 class="text-uppercase text-primary fw-bold">SHOES</h3>
+            <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Fugiat, neque taque? Id tempora earum.</p>
+            <h4 class="fw-bold mb-3">&#8377;5000.00</h4>
+            <button class="btn btn-primary px-4 py-2">Shop Now</button>
+        </div>
+        <div class="col-md-2 text-center">
+            <img src="{% static 'images/1.jpg' %}" class="img-fluid shoe-image" alt="Shoes">
+        </div>
+    </div>
+</a>
+</section>
+<div class="products-category">
+    <div class="d-flex justify-content-center text-decoration-none">
+        <a href="">Shoes</a>
+        <a href="">Fashion</a>
+        <a href="">Electronics</a>
+        <a href="">Home & Furniture</a>
+        <a href="">Appliances</a>
+    </div>
+</div>
+
+
+    <section class="card-product row g-0 w-100">
+        {% for product in products %}
+        <a href="{% url 'full_product' product.product_id %}" class="col-lg-2 text-decoration-none">
+            <div class="card">
+                <div class="image-container">
+                    <img src="{{ product.product_image.url }}" class="card-img-top" alt="{{ product.product_name }}">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.product_name }}</h5>
+                    <p class="card-text"><strong>Price:</strong> ₹{{ product.product_price }}</p>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </section>
+
+{% endblock %}

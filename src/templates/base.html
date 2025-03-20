@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block head %}
+    {% endblock %}
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Navbar Section -->
+        <nav class="navbar">
+            <div class="logo">
+                <img src="https://t3.ftcdn.net/jpg/04/10/65/20/360_F_410652028_C6ngQ3z8lQvdAGg2ft4Vf0n8O3b8u3aw.jpg" 
+                alt="Logo" style="height: 40px; width: 125px">
+            </div>
+            <ul class="nav-link">
+                <li><a href="{% url 'ecommerce' %}">Home</a></li>
+                <li><a href="#">Product</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="{% url 'accounts:login' %}">Login</a></li>
+                <li style="margin-right: 25px;"><a href="{% url 'cart' %}"><i class="bi bi-cart-fill"></i></a></li>  
+            </ul>
+        </nav>
+
+        <!-- Content Section -->
+        <div class="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+    {% block footer %}
+
+        <!-- Footer Section -->
+        <footer class="footer bg-light py-5">
+            <div class="container">
+                <div class="row">
+                    <!-- My Account Section -->
+                    <div class="col-md-3">
+                        <h5>My Account</h5>
+                        <p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts.</p>
+                        <form>
+                            <input type="email" class="form-control mb-2" placeholder="Enter your email">
+                            <button class="btn btn-danger w-100">Subscribe</button>
+                        </form>
+                    </div>
+        
+                    <!-- Contact Section -->
+                    <div class="col-md-3">
+                        <h5>Contact</h5>
+                        <p>2/45 Tower Street, New York, USA</p>
+                        <p>0012 678 8899</p>
+                        <p><a href="mailto:contact@sam_ecommerce.com" class="text-dark">contact@sam_ecommerce.com</a></p>
+                        <p><a href="https://www.sam_ecommerce.com" class="text-dark">www.sam_ecommerce.com</a></p>
+                        <div class="d-flex gap-2">
+                            <i class="bi bi-facebook"></i>
+                            <i class="bi bi-twitter"></i>
+                            <i class="bi bi-instagram"></i>
+                            <i class="bi bi-linkedin"></i>
+                        </div>
+                    </div>
+        
+                    <!-- Information Section -->
+                    <div class="col-md-3">
+                        <h5>Information</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-dark text-decoration-none">New Products</a></li>
+                            <li><a href="#" class="text-dark text-decoration-none">Top Sellers</a></li>
+                            <li><a href="#" class="text-dark text-decoration-none">Our Blog</a></li>
+                            <li><a href="#" class="text-dark text-decoration-none">About Our Shop</a></li>
+                            <li><a href="#" class="text-dark text-decoration-none">Secure Shopping</a></li>
+                        </ul>
+                    </div>
+        
+                    <!-- Instagram Section -->
+                    <div class="col-md-3">
+                        <h5>Instagram</h5>
+                        <div class="row g-1">
+                            <div class="col-4">
+                                <img src="https://via.placeholder.com/80" class="img-fluid">
+                            </div>
+                            <div class="col-4">
+                                <img src="https://via.placeholder.com/80" class="img-fluid">
+                            </div>
+                            <div class="col-4">
+                                <img src="https://via.placeholder.com/80" class="img-fluid">
+                            </div>
+                            <div class="col-4">
+                                <img src="https://via.placeholder.com/80" class="img-fluid">
+                            </div>
+                            <div class="col-4">
+                                <img src="https://via.placeholder.com/80" class="img-fluid">
+                            </div>
+                            <div class="col-4">
+                                <img src="https://via.placeholder.com/80" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center py-3 mt-4 border-top">
+                    <p>&copy; 2025 Sam E-commerce Site. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    
+    {% endblock %}
+    
+</body>
+</html>

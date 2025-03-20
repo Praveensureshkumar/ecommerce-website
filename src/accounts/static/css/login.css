@@ -1,0 +1,97 @@
+body {
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to right, white 60%, rgb(222, 193, 139) 40%);
+    font-family: Arial, sans-serif;
+}
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh; 
+    width: 100%;
+}
+.logo-box {
+    box-shadow: 5px 5px 20px rgb(228, 226, 226);
+    padding: 20px;
+    width: 450px;
+    margin: 0 250px;
+    background: white;
+}
+
+/* Form Styles */
+.logo {
+    width: 100%;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input {
+    width: 75%;
+    padding: 10px;
+    margin-bottom: 25px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: rgb(233, 203, 149);
+    outline: none;
+}
+
+input:focus {
+    background-color: white;
+    border-color: orange;
+}
+
+/* Button */
+.auth-button {
+    background-color: orange;
+    color: white;
+    border-radius: 15px;
+    width: 120px;
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.auth-button:hover {
+    background-color: darkorange;
+}
+
+/* Image Section */
+.auth-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-logo {
+    width: 600px;
+    height: 500px;
+    margin: 0 150px;
+}
+
+/* Sign-up Link */
+.signup {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.signup p {
+    display: inline;
+    margin-right: 5px;
+}
+
+.signup a {
+    text-decoration: none;
+    color: orange;
+    font-weight: bold;
+}
+
+.signup a:hover {
+    text-decoration: underline;
+}
