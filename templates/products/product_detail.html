@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/full_page.css' %}">
+{% endblock %}
+{% block content %}
+<section class="products row">
+    <div class="col-lg-8 full-height">
+        <div><img src="{{ product.product_image.url }}" class="card-img-top" alt="{{ product.product_name }}"></div>
+    </div>
+    <div class="col-lg-4">
+        <div>
+            <h1>{{product.product_name}}</h1>
+            <div class="rating">
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star text-warning"></i>
+                <i class="bi bi-star text-warning"></i>
+            </div>
+            <a href="{% url 'add_to_cart' product.product_id %}" class="btn btn-primary">Add Card</a>
+            <a href="" class="btn btn-primary">Buy Now</a>
+        </div>
+    </div>
+</section>
+{% block footer %}
+{% endblock %}
+{% endblock %}

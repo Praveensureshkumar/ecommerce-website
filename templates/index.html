@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+{% block content %}
+<section class="product-banner container my-5">
+    <a href="{% url 'full_product' 1 %}" class="text-decoration-none" style="color: inherit;">
+    <div class="row align-items-center bg-light rounded shadow p-4" >
+        <div class="col-lg-10">
+            <h2 class="text-uppercase fw-bold">FOOTBALL</h2>
+            <h3 class="text-uppercase fw-bold">SPORTS</h3>
+            <h3 class="text-uppercase text-primary fw-bold">SHOES</h3>
+            <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Fugiat, neque taque? Id tempora earum.</p>
+            <h4 class="fw-bold mb-3">&#8377;5000.00</h4>
+            <button class="btn btn-primary px-4 py-2">Shop Now</button>
+        </div>
+        <div class="col-md-2 text-center">
+            <img src="{% static 'images/1.jpg' %}" class="img-fluid shoe-image" alt="Shoes">
+        </div>
+    </div>
+</a>
+</section>
+
+<div class="products-category">
+    <div class="d-flex justify-content-center gap-5">
+        {% for cat in categories %}
+            <a href="{% url 'category_products' cat.name %}" class="category text-decoration-none">{{ cat.name }}</a>
+        {% endfor %}
+    </div>
+</div>
+
+<section class="card-product row g-0 w-100">
+    {% for product in products %}
+    <div class="custom-col col-6 p-3"> 
+        <a href="{% url 'full_product' product.product_id %}" class="text-decoration-none d-block"> 
+            <div class="card h-100">
+                <div class="image-container">
+                    <img src="{{ product.product_image.url }}" class="card-img-top" alt="{{ product.product_name }}">
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ product.product_name|truncatewords:10 }}</h5>
+                    <p class="card-text"><strong>Price:</strong> ₹{{ product.product_price }}</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    {% empty %}
+    <p class="text-center">No products available in this category.</p>
+    {% endfor %}
+</section>
+
+{% endblock %}
