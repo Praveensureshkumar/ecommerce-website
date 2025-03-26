@@ -23,30 +23,32 @@
 </a>
 </section>
 <div class="products-category">
-    <div class="d-flex justify-content-center text-decoration-none">
-        <a href="">Shoes</a>
-        <a href="">Fashion</a>
-        <a href="">Electronics</a>
-        <a href="">Home & Furniture</a>
-        <a href="">Appliances</a>
+    <div class="d-flex justify-content-center gap-2">
+        {% for cat in categories %}
+            <a href="{% url 'category_products' cat.name %}" class="category text-decoration-none">{{ cat.name }}</a>
+        {% endfor %}
     </div>
 </div>
 
-
-    <section class="card-product row g-0 w-100">
-        {% for product in products %}
-        <a href="{% url 'full_product' product.product_id %}" class="col-lg-2 text-decoration-none">
-            <div class="card">
+<section class="card-product row g-0 w-100">
+    {% for product in products %}
+    <div class="custom-col col-6 p-3"> <!-- Added padding for spacing -->
+        <a href="{% url 'full_product' product.product_id %}" class="text-decoration-none d-block"> 
+            <div class="card h-100"> <!-- Ensures equal height for all cards -->
                 <div class="image-container">
                     <img src="{{ product.product_image.url }}" class="card-img-top" alt="{{ product.product_name }}">
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title">{{ product.product_name }}</h5>
+                <div class="card-body text-center"> <!-- Center aligns content -->
+                    <h5 class="card-title">{{ product.product_name|truncatewords:10 }}</h5>
                     <p class="card-text"><strong>Price:</strong> ₹{{ product.product_price }}</p>
                 </div>
             </div>
         </a>
-        {% endfor %}
-    </section>
+    </div>
+    {% empty %}
+    <p class="text-center">No products available in this category.</p>
+    {% endfor %}
+</section>
+
 
 {% endblock %}
