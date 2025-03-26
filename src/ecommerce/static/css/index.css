@@ -1,12 +1,49 @@
-
-.card{
+.category{
+    border: solid 1px black;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background-color: white;
+}
+.category:hover{
+    transform: scale(1.1);
+    transition: transform 0.2s ease-in-out;
+}
+.image-container {
+    height: 200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers image and content horizontally */
+    justify-content: center;
+}
+.card-img-top {
+    height: 150PX;
+    width: 90%;
+    object-fit: contain;
+    background-color: white;
     
+    
+}
+.card{
+    border: solid 1px rgb(185, 183, 175);
 }
 .card:hover {
     transform: scale(1.1);
     transition: transform 0.2s ease-in-out;
     
 }
+.card-body{
+    border-top: solid 1px rgb(185, 183, 175);
+}
+.card-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limit to 3 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Works with -webkit-line-clamp */
+}
+
+
 
 @media (min-width: 768px) {
     .custom-col {

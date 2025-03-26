@@ -23,7 +23,7 @@
 </a>
 </section>
 <div class="products-category">
-    <div class="d-flex justify-content-center gap-2">
+    <div class="d-flex justify-content-center gap-5">
         {% for cat in categories %}
             <a href="{% url 'category_products' cat.name %}" class="category text-decoration-none">{{ cat.name }}</a>
         {% endfor %}
@@ -39,7 +39,7 @@
                     <img src="{{ product.product_image.url }}" class="card-img-top" alt="{{ product.product_name }}">
                 </div>
                 <div class="card-body text-center"> <!-- Center aligns content -->
-                    <h5 class="card-title">{{ product.product_name|truncatewords:10 }}</h5>
+                    <p class="card-title">{{ product.product_name }}</p>
                     <p class="card-text"><strong>Price:</strong> ₹{{ product.product_price }}</p>
                 </div>
             </div>

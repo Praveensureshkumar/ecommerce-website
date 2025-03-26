@@ -27,6 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('accounts.urls')),
     path('ecommerce/',ecommerce,name='ecommerce'),
+    path('ecommerce/<str:category>/',ecommerce,name='category_products'),
     path('full_product/<int:product_id>/',full_product,name='full_product'),
     path('add_to_cart/<int:product_id>/', add_to_cart, name='add_to_cart'),
     path('remove_cart/<int:cart_item_id>/', remove_cart, name='remove_cart'),
