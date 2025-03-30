@@ -5,11 +5,12 @@
     {% if cart_items %}
         <div class="row">
             {% for item in cart_items %}
-                <div class="col-lg-6 col-md-8 col-sm-12 mb-3">
+                <div class="col-lg-6 offset-1">
                     <div class="card p-3">
                         <img src="{{ item.product.product_image.url }}" alt="{{ item.product.product_name }}" class="img-fluid" width="150" height="150">
                         <h5>{{ item.product.product_name|truncatewords:5 }}</h5>
                         <p>Quantity: {{ item.quantity }}</p>
+                        <h5>Price:{{ item.product.product_price }}</h5>
                         <a href="" class="btn btn-primary mb-3">Buy Now</a>
                         <a href="{% url 'remove_cart' item.id %}" class="btn btn-danger">Remove Item</a>
                     </div>

@@ -11,7 +11,10 @@ class index_product_details(models.Model):
     product_id = models.AutoField(primary_key=True)
     product_name = models.TextField()
     product_description = models.TextField(null=True, blank=True)
+    product_highlights=models.TextField(null=True, blank=True)
     product_price = models.IntegerField()
+    product_size_type=models.CharField(max_length=20,null=True, blank=True)
+    product_size=models.CharField(max_length=20,null=True, blank=True)
     product_image = models.ImageField(upload_to='media/', null=True, blank=True)
 
     def __str__(self):

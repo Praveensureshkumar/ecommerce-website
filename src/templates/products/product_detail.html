@@ -1,21 +1,69 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/product_detail.css' %}">
+<script src="{% static 'javascript/product_detail.js' %}"></script>
+{% endblock %}
 {% block content %}
 <section class="products row">
-    <div class="col-lg-8">
-        <div><img src="{{ product.product_image.url }}" class="card-img-top" alt="{{ product.product_name }}"></div>
-    </div>
-    <div class="col-lg-4">
+    <div class="col-lg-4 offset-1 me-1">
+        <div class="container">
+        <div><img src="{{ product.product_image.url }}" class="card-img-top products_img" alt="{{ product.product_name }}">
+        <a href="{% url 'add_to_cart' product.product_id %}" class="btn btn-primary">Add Card</a>
+        <a href="" class="btn btn-primary">Buy Now</a></div>
+    </div></div>
+    <div class="col-lg-6">
         <div>
-            <h1>{{product.product_name}}</h1>
-            <div class="rating">
-                <i class="bi bi-star-fill text-warning"></i>
-                <i class="bi bi-star-fill text-warning"></i>
-                <i class="bi bi-star-fill text-warning"></i>
-                <i class="bi bi-star text-warning"></i>
-                <i class="bi bi-star text-warning"></i>
+            <p style="font-size: 20px;">{{product.product_name}}</p>
+            <p style="font-size: 25px;"><strong>Price: ₹{{ product.product_price }}</strong></p>
+            <h3>Available offers</h3>
+            <ul>
+                <li><i class="bi bi-tag-fill"></i><strong>Bank Offer</strong> Offer5% Unlimited Cashback on Flipkart Axis Bank Credit Card</li>
+                <li><i class="bi bi-tag-fill"></i><strong>Bank Offer</strong> additional ₹1000 off on Credit/Debit Card, UPI and EMI Transactions</li>
+                <li><i class="bi bi-tag-fill"></i><strong>Bank Offer</strong> Get Additional ₹1000 off on SBI, HDFC and BOB Bank Credit Card EMI Transactions</li>
+                <li><i class="bi bi-tag-fill"></i><strong>Bank Offer</strong> Special PriceGet extra 5% off (price inclusive of cashback/coupon)</li>
+                <div id="extraOffers" class="hidden">
+                    <li><i class="bi bi-tag-fill"></i><strong>Bank Offer</strong> Get additional ₹250 off on Credit/Debit Card, UPI and EMI Transactions</li>
+                    <li><i class="bi bi-tag-fill"></i><strong>Bank Offer</strong> 10% instant discount on SBI Credit Card EMI Transactions, up to ₹1,500 on orders of ₹5,000 and above</li>
+                    <li><i class="bi bi-tag-fill"></i><strong>Bank Offer</strong> 10% off up to ₹1000 on HDFC Bank Credit Card EMI on 6 months and above tenure. Min. Txn Value: ₹5000</li>
+                    <li><i class="bi bi-tag-fill"></i><strong>Bank Offer</strong> 10% off on BOBCARD EMI Transactions, up to ₹1,500 on orders of ₹5,000 and above</li>
+                    <li><i class="bi bi-tag-fill"></i><strong>Bank Offer</strong> 10% off up to ₹1,500 on HSBC Bank Credit Card EMI Txns on orders of ₹5,000 and above</li>
+                    <li><i class="bi bi-tag-fill"></i><strong>Bank Offer</strong> Extra ₹500 on HDFC Bank Credit Card EMI on 6 and above tenure. Min Txn Value: ₹24990</li>
+                </div>
+            </ul>
+            <p class="show-more" onclick="toggleOffers()">View <span id="offerCount">6</span> more offers</p>
+            
+                
+            <div class="row my-3">
+                <div class="col-lg-2" style="color:#6f7277">{{ product.product_size_type }}</div>
+                <div class="col-lg-10">
+                    {% for size in product_size_list %}
+                        <div class="box_product_size">{{ size }}</div>
+                    {% empty %}
+                        <div style="color: black;">Out Of Stock</div>
+                    {% endfor %}
+                </div>
             </div>
-            <a href="{% url 'add_to_cart' product.product_id %}" class="btn btn-primary">Add Card</a>
-            <a href="" class="btn btn-primary">Buy Now</a>
+            <div class="row my-3">
+                <div class="col-lg-2" style="color:#6f7277;">Highlights</div>
+                <div class="col-lg-10">
+                    <ul style="color:#6f7277; list-style-type: disc; padding-left: 20px;">
+                        {% for highlight in product_highlights_list %}
+                            <li><span style="color: black;">{{ highlight }}</span></li>
+                        {% empty %}
+                            <div style="color: black;" >No highlight</div>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="row my-3">
+                <div class="col-lg-2" style="color:#6f7277">Description</div>
+                <div class="col-lg-10">{{ product.product_description }}</div>
+            </div>
+                
+        
+            
         </div>
     </div>
 </section>

@@ -1,0 +1,38 @@
+.products{
+    height: 100%;
+    width: 100%;
+}
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+
+}
+.products_img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+section{
+    background-color: #F3F4F6;
+}
+.col-lg-4{
+    background-color: white;
+    position: sticky;
+    top: 10px; /* Adjust this value as needed */
+    height: fit-content; /* Ensures it doesn't stretch unnecessarily */
+}
+.col-lg-6{
+    background-color: white;
+}
+.bi-tag-fill{
+    color: green;
+}
+.hidden {
+    display: none;
+}
+.show-more {
+    color: blue;
+    cursor: pointer;
+}
