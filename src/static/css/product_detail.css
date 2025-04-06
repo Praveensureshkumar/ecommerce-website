@@ -4,9 +4,10 @@
 }
 .container{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 80vh;
+    height: auto;
 
 }
 .products_img{
@@ -20,8 +21,8 @@ section{
 .col-lg-4{
     background-color: white;
     position: sticky;
-    top: 10px; /* Adjust this value as needed */
-    height: fit-content; /* Ensures it doesn't stretch unnecessarily */
+    top: 10px; 
+    height: fit-content;
 }
 .col-lg-6{
     background-color: white;
@@ -31,8 +32,15 @@ section{
 }
 .hidden {
     display: none;
-}
+}   
 .show-more {
     color: blue;
     cursor: pointer;
+}
+.box_product_size{
+    display: inline;
+    border: solid 2px #86898f;
+    background-color: white;
+    padding: 5px;
+    margin-right: 20px;
 }

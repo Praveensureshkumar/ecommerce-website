@@ -19,6 +19,7 @@ TEMPLATES_DIR=os.path.join(BASE_DIR,'templates')
 TEMPLATES_DIR_ECOMMERCE=os.path.join(os.path.join(BASE_DIR,'ecommerce'),'static')
 TEMPLATES_DIR_ACCOUNTS=os.path.join(os.path.join(BASE_DIR,'accounts'),'static')
 TEMPLATES_DIR_PRODUCTS=os.path.join(os.path.join(BASE_DIR,'products'),'static')
+TEMPLATES_DIR_ORDERS=os.path.join(os.path.join(BASE_DIR,'orders'),'static')
 
 
 # Quick-start development settings - unsuitable for production
@@ -136,6 +137,6 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-STATICFILES_DIRS=[TEMPLATES_DIR_ACCOUNTS,TEMPLATES_DIR_ECOMMERCE,TEMPLATES_DIR_PRODUCTS]
+STATICFILES_DIRS=[TEMPLATES_DIR_ACCOUNTS,TEMPLATES_DIR_ECOMMERCE,TEMPLATES_DIR_PRODUCTS,TEMPLATES_DIR_ORDERS]
 STATIC_ROOT=os.path.join(BASE_DIR,'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

@@ -40,7 +40,7 @@
                 </div>
                 <div class="card-body text-center"> <!-- Center aligns content -->
                     <p class="card-title">{{ product.product_name }}</p>
-                    <p class="card-text"><strong>Price:</strong> ₹{{ product.product_price }}</p>
+                    <p class="card-text"> ₹{{ product.product_offer_price }} <s style="color: #bec1ca;">₹{{ product.product_original_price }}</s></p>
                 </div>
             </div>
         </a>

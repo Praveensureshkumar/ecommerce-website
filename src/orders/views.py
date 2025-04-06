@@ -1,12 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from orders.models import Cart, CartProduct
 from products.models import index_product_details
-
+from datetime import datetime, timedelta
 
 def cart(request):
     cart = Cart.objects.filter(id=request.session.get('cart_id')).first()
-    cart_items = CartProduct.objects.filter(cart=cart) if cart else []  # Correct way to get cart items
-    return render(request, 'orders/cart.html', {'cart_items': cart_items})
+    cart_items = CartProduct.objects.filter(cart=cart) if cart else [] 
+    delivery_date = datetime.today() + timedelta(days=5)
+    return render(request, 'orders/cart.html', {'cart_items': cart_items,'delivery_date': delivery_date})
 
 def add_to_cart(request, product_id):
     product = get_object_or_404(index_product_details, product_id=product_id)

@@ -1,21 +1,90 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/cart.css' %}">
+<script src="{% static 'javascrite/cart.js' %}"></script>
+{% endblock %}
 
 {% block content %}
 <div class="container mt-4">
     {% if cart_items %}
         <div class="row">
-            {% for item in cart_items %}
-                <div class="col-lg-6 offset-1">
+            <div class="col-lg-7 offset-1">
+                {% for item in cart_items %}
                     <div class="card p-3">
-                        <img src="{{ item.product.product_image.url }}" alt="{{ item.product.product_name }}" class="img-fluid" width="150" height="150">
-                        <h5>{{ item.product.product_name|truncatewords:5 }}</h5>
-                        <p>Quantity: {{ item.quantity }}</p>
-                        <h5>Price:{{ item.product.product_price }}</h5>
-                        <a href="" class="btn btn-primary mb-3">Buy Now</a>
-                        <a href="{% url 'remove_cart' item.id %}" class="btn btn-danger">Remove Item</a>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <img src="{{ item.product.product_image.url }}" alt="{{ item.product.product_name }}" class="img-fluid" width="150" height="150">
+                                <div class="quantity-wrapper">
+                                    <div class="quantity-selector mt-1">
+                                      <button onclick="decrease()">−</button>
+                                      <input type="text" id="quantity" value="1" readonly>
+                                      <button onclick="increase()">+</button>
+                                    </div>
+                                  </div>                                                                    
+                            </div>
+                            <div class="col-lg-5">
+                                <h5>{{ item.product.product_name|truncatewords:5 }}</h5>
+                                <h5>Price:{{ item.product.product_price }}</h5>
+                                <a href="{% url 'remove_cart' item.id %}">Remove Item</a>
+                            </div>
+                            <div class="col-lg-4">
+                                <p>Delivery by {{ delivery_date|date:"M j" }}</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
+            <div class="col-lg-3 price_details">
+                <div class="price-details">
+                    <h3>Price details</h3>
+                    <div class="row">
+                      <div class="col-12 d-flex justify-content-between">
+                        <span class="label">Price ({{ items_count }} items)</span>
+                        <span class="value">₹{{ total_price }}</span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-12 d-flex justify-content-between">
+                        <span class="label">Discount</span>
+                        <span class="value">– ₹{{ discount }}</span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-12 d-flex justify-content-between">  
+                        <span class="label">Buy more & save more</span>
+                        <span class="value">– ₹{{ extra_discount }}</span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-12 d-flex justify-content-between"> 
+                        <span class="label">Delivery Charges</span>
+                        <span class="value">{% if delivery_charges > 0 %}
+                                                    ₹{{ delivery_charges }}
+                                            {% else %}
+                                                    <s>₹100</s> Free
+                                            {% endif %}
+                        </span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-12 d-flex justify-content-between"> 
+                        <span class="label">Protect Promise Fee</span>
+                        <span class="value">₹{{ promise_fee }}</span>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row total">
+                      <div class="col-12 d-flex justify-content-between"> 
+                        <span class="label">Total Amount</span>
+                        <span class="value">₹{{ final_amount }}</span>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="savings">You will save ₹{{ total_savings }} on this order</div>
+                  </div>
+                  
+            </div>
         </div>
     {% else %}
         <p class="text-center">Your cart is empty.</p>

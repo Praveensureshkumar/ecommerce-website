@@ -12,3 +12,14 @@ function toggleOffers() {
         showMoreText.innerHTML = "View 6 more offers"; // Ensure correct count
     }
 }
+const sizeBtns = document.querySelectorAll('.size-btn');
+    if (sizeBtns.length > 0) {
+        sizeBtns[0].classList.add('selected');  // Select the first one by default
+    }
+    sizeBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            sizeBtns.forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+    });
+});
+
