@@ -2,7 +2,6 @@
 {% load static %}
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/cart.css' %}">
-<script src="{% static 'javascrite/cart.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -11,22 +10,24 @@
         <div class="row">
             <div class="col-lg-7 offset-1">
                 {% for item in cart_items %}
-                    <div class="card p-3">
+                     <div class="card p-3 cart-item mb-2" 
+                          data-price="{{ item.product.product_offer_price }}" 
+                          data-originalprice="{{ item.product.product_original_price }}">
                         <div class="row">
                             <div class="col-lg-3">
                                 <img src="{{ item.product.product_image.url }}" alt="{{ item.product.product_name }}" class="img-fluid" width="150" height="150">
                                 <div class="quantity-wrapper">
                                     <div class="quantity-selector mt-1">
-                                      <button onclick="decrease()">−</button>
-                                      <input type="text" id="quantity" value="1" readonly>
-                                      <button onclick="increase()">+</button>
+                                      <button class="increase" data-product-id="{{ item.product.id }}">+</button>
+                                      <input type="text" class="quantity" data-product-id="{{ item.product.id }}" value="{{ item.quantity }}">
+                                      <button class="decrease" data-product-id="{{ item.product.id }}">−</button>
                                     </div>
                                   </div>                                                                    
                             </div>
                             <div class="col-lg-5">
                                 <h5>{{ item.product.product_name|truncatewords:5 }}</h5>
-                                <h5>Price:{{ item.product.product_price }}</h5>
-                                <a href="{% url 'remove_cart' item.id %}">Remove Item</a>
+                                <p style="font-size: 25px;"><strong>₹{{ item.product.product_offer_price }}</strong><s style="color: #6f7277;; font-size: 17px; margin-left: 10px;">₹{{ item.product.product_original_price }}</s></p>
+                                <a class="remove-btm" href="{% url 'remove_cart' item.id %}">Remove</a>
                             </div>
                             <div class="col-lg-4">
                                 <p>Delivery by {{ delivery_date|date:"M j" }}</p>
@@ -34,62 +35,65 @@
                         </div>
                     </div>
                 {% endfor %}
+                <div class="order-footer">
+                  <a href="" class="place-order">Place Order</a>
+                </div>
             </div>
+            
             <div class="col-lg-3 price_details">
                 <div class="price-details">
                     <h3>Price details</h3>
                     <div class="row">
                       <div class="col-12 d-flex justify-content-between">
                         <span class="label">Price ({{ items_count }} items)</span>
-                        <span class="value">₹{{ total_price }}</span>
+                        <span class="value total-price"></span>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-12 d-flex justify-content-between">
                         <span class="label">Discount</span>
-                        <span class="value">– ₹{{ discount }}</span>
+                        <span class="value discount" style="color:green;"></span>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-12 d-flex justify-content-between">  
                         <span class="label">Buy more & save more</span>
-                        <span class="value">– ₹{{ extra_discount }}</span>
+                        <span class="value extra_discount" style="color:green;"></span>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-12 d-flex justify-content-between"> 
                         <span class="label">Delivery Charges</span>
-                        <span class="value">{% if delivery_charges > 0 %}
-                                                    ₹{{ delivery_charges }}
-                                            {% else %}
-                                                    <s>₹100</s> Free
-                                            {% endif %}
-                        </span>
+                        <span class="value delivery"></span>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-12 d-flex justify-content-between"> 
                         <span class="label">Protect Promise Fee</span>
-                        <span class="value">₹{{ promise_fee }}</span>
+                        <span class="value promise_fee"></span>
                       </div>
                     </div>
                     <hr>
                     <div class="row total">
                       <div class="col-12 d-flex justify-content-between"> 
+                        <h5>
                         <span class="label">Total Amount</span>
-                        <span class="value">₹{{ final_amount }}</span>
+                        </h5>
+                        <h5><span class="value final_amount"></span></h5>
                       </div>
                     </div>
                     <hr>
-                    <div class="savings">You will save ₹{{ total_savings }} on this order</div>
+                    <div class="savings total_savings" style="color:green;"></div>
                   </div>
-                  
             </div>
         </div>
     {% else %}
         <p class="text-center">Your cart is empty.</p>
-    {% endif %}
+    {% endif %}   
+    
 </div>
 {% endblock %}
 
-{% block footer %}{% endblock %}
+{% block footer %}
+<script src="{% static 'javascript/cart.js' %}"></script>
+{% endblock %}

@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import pymysql
+pymysql.version_info=(1,5,6,"final",0)
+pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,6 +23,7 @@ TEMPLATES_DIR_ECOMMERCE=os.path.join(os.path.join(BASE_DIR,'ecommerce'),'static'
 TEMPLATES_DIR_ACCOUNTS=os.path.join(os.path.join(BASE_DIR,'accounts'),'static')
 TEMPLATES_DIR_PRODUCTS=os.path.join(os.path.join(BASE_DIR,'products'),'static')
 TEMPLATES_DIR_ORDERS=os.path.join(os.path.join(BASE_DIR,'orders'),'static')
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -140,3 +144,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS=[TEMPLATES_DIR_ACCOUNTS,TEMPLATES_DIR_ECOMMERCE,TEMPLATES_DIR_PRODUCTS,TEMPLATES_DIR_ORDERS]
 STATIC_ROOT=os.path.join(BASE_DIR,'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+

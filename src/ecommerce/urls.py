@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 from ecommerce.views import *
 from products.views import *
 from orders.views import *
+from accounts.views import *
 import accounts
 
 urlpatterns = [
@@ -31,6 +32,7 @@ urlpatterns = [
     path('full_product/<int:product_id>/',full_product,name='full_product'),
     path('add_to_cart/<int:product_id>/', add_to_cart, name='add_to_cart'),
     path('remove_cart/<int:cart_item_id>/', remove_cart, name='remove_cart'),
+    path('logout/',logout_view, name='logout'),
     path('cart/',cart,name='cart')
 
 ]

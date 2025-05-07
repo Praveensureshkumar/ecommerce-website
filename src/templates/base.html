@@ -13,102 +13,39 @@
 </head>
 <body>
     <div class="wrapper">
-        <!-- Navbar Section -->
         <nav class="navbar">
             <div class="logo">
-                <img src="https://t3.ftcdn.net/jpg/04/10/65/20/360_F_410652028_C6ngQ3z8lQvdAGg2ft4Vf0n8O3b8u3aw.jpg" 
-                alt="Logo" style="height: 40px; width: 125px">
+                <img src="https://t3.ftcdn.net/jpg/04/10/65/20/360_F_410652028_C6ngQ3z8lQvdAGg2ft4Vf0n8O3b8u3aw.jpg" alt="Logo" style="height: 40px; width: 125px">
             </div>
             <ul class="nav-link">
                 <li><a href="{% url 'ecommerce' %}">Home</a></li>
                 <li><a href="#">Product</a></li>
+                {% if user.is_authenticated %}
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Welcome! {{ user.username }}</a>
+                    <div class="dropdown-content">
+                        <a href="#">My Account</a>
+                        <a href="{% url 'logout' %}">Logout</a>
+                    </div>
+                </li>
+                {% else %}
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
-                <li><a href="{% url 'accounts:login' %}">Login</a></li>
+                <li><a href="{% url 'accounts:login_view' %}">Login</a></li>
+                {% endif %}
                 <li style="margin-right: 25px;"><a href="{% url 'cart' %}"><i class="bi bi-cart-fill"></i></a></li>  
             </ul>
         </nav>
-
-        <!-- Content Section -->
-        <div class="content">
+        <div class="content">   
             {% block content %}
             {% endblock %}
         </div>
+        <footer class="footer text-center">
+            <hr style="margin: 0; padding: 0;">
+            <p style="background-color: white; margin: 0; padding: 0;">&copy; 2025 Sam E-commerce Site. All rights reserved.</p>
+        </footer>
     </div>
     {% block footer %}
-
-        <!-- Footer Section -->
-        <footer class="footer">
-            <div class="container">
-                <div class="row">
-                    <!-- My Account Section -->
-                    <div class="col-md-3">
-                        <h5>My Account</h5>
-                        <p></p>
-                        <form>
-                            <input type="email" class="form-control mb-2" placeholder="Enter your email">
-                            <button class="btn btn-danger w-100">Subscribe</button>
-                        </form>
-                    </div>
-        
-                    <!-- Contact Section -->
-                    <div class="col-md-3">
-                        <h5>Contact</h5>
-                        <p>2/45 Tower Street, New York, USA</p>
-                        <p>0012 678 8899</p>
-                        <p><a href="mailto:contact@sam_ecommerce.com" class="text-dark">contact@sam_ecommerce.com</a></p>
-                        <p><a href="https://www.sam_ecommerce.com" class="text-dark">www.sam_ecommerce.com</a></p>
-                        <div class="d-flex gap-2">
-                            <i class="bi bi-facebook"></i>
-                            <i class="bi bi-twitter"></i>
-                            <i class="bi bi-instagram"></i>
-                            <i class="bi bi-linkedin"></i>
-                        </div>
-                    </div>
-        
-                    <!-- Information Section -->
-                    <div class="col-md-3">
-                        <h5>Information</h5>
-                        <ul class="list-unstyled">
-                            <li><a href="#" class="text-dark text-decoration-none">New Products</a></li>
-                            <li><a href="#" class="text-dark text-decoration-none">Top Sellers</a></li>
-                            <li><a href="#" class="text-dark text-decoration-none">Our Blog</a></li>
-                            <li><a href="#" class="text-dark text-decoration-none">About Our Shop</a></li>
-                            <li><a href="#" class="text-dark text-decoration-none">Secure Shopping</a></li>
-                        </ul>
-                    </div>
-        
-                    <!-- Instagram Section -->
-                    <div class="col-md-3">
-                        <h5>Instagram</h5>
-                        <div class="row g-1">
-                            <div class="col-4">
-                                <img src="https://via.placeholder.com/80" class="img-fluid">
-                            </div>
-                            <div class="col-4">
-                                <img src="https://via.placeholder.com/80" class="img-fluid">
-                            </div>
-                            <div class="col-4">
-                                <img src="https://via.placeholder.com/80" class="img-fluid">
-                            </div>
-                            <div class="col-4">
-                                <img src="https://via.placeholder.com/80" class="img-fluid">
-                            </div>
-                            <div class="col-4">
-                                <img src="https://via.placeholder.com/80" class="img-fluid">
-                            </div>
-                            <div class="col-4">
-                                <img src="https://via.placeholder.com/80" class="img-fluid">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center">
-                    <p>&copy; 2025 Sam E-commerce Site. All rights reserved.</p>
-                </div>
-            </div>
-        </footer>
-    
     {% endblock %}
     
 </body>

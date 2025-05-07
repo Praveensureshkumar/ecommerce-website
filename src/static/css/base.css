@@ -38,14 +38,7 @@ html, body {
 }
 
 .wrapper {
-
     display: flex;
     flex-direction: column;
-}
-
-.footer{
-    background-color: rgb(161, 114, 114);
-    color: white;
-
 }
     
