@@ -19,10 +19,6 @@ This project features real-time search, secure authentication, order processing,
 - **Search Engine:** Elasticsearch  
 - **Frontend:** HTML, CSS, JavaScript
 
-## 📷 Screenshots
-
-_Add screenshots of your homepage, search results, and admin dashboard here if available._
-
 ## ⚙️ Setup Instructions
 
 1. **Clone the Repository**
