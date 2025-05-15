@@ -41,10 +41,5 @@ pip install -r requirements.txt
 python manage.py makemigrations
 python manage.py migrate
 
-# 6. Run Elasticsearch
-# Make sure Elasticsearch is running on localhost:9200
-# If using Docker:
-docker run -p 9200:9200 -e "discovery.type=single-node" elasticsearch:7.10.0
-
-# 7. Run the Django Server
+# 6. Run the Django Server
 python manage.py runserver
