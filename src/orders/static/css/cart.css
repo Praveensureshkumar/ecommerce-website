@@ -58,15 +58,16 @@
     border-radius: 5px;
 }
 .order-footer{
-    border: 1px solid black;
+    position: sticky;
+    bottom: 0;
+    border: 1px solid rgb(194, 183, 183) ;
     padding: 20px;
     text-align: end;
     background-color: white;
-
+    margin-bottom: 10px;
+    z-index: 1;
 }
 .place-order {
-    position: sticky;
-    bottom: 10;
     background-color: orange;
     color: white;
     padding: 15px 65px;

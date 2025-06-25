@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.urls import path
 from ecommerce.views import *
 from products.views import *
 from orders.views import *
@@ -33,7 +34,12 @@ urlpatterns = [
     path('add_to_cart/<int:product_id>/', add_to_cart, name='add_to_cart'),
     path('remove_cart/<int:cart_item_id>/', remove_cart, name='remove_cart'),
     path('logout/',logout_view, name='logout'),
-    path('cart/',cart,name='cart')
+    path('checkout/',checkout,name='checkout'),
+    path('cart/',cart,name='cart'),
+    path('profile/', profile_update_view, name='profile'),
+    path('delete-account/',delete_account, name='delete_account'),
+    path('', home, name='home'),
+
 
 ]
 

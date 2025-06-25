@@ -20,3 +20,15 @@ class index_product_details(models.Model):
 
     def __str__(self):
         return self.product_name
+
+class Slide(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField(blank=True)
+    image = models.ImageField(upload_to='slides/')
+    order = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ['order']

@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect
-from .forms import *
+from django.shortcuts import render, redirect, get_object_or_404
+from accounts.forms import *
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
+from django.contrib import messages
 from accounts.models import *
-from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
 def login_view(request):
     form = LoginForm()
@@ -42,3 +43,35 @@ def register_user(request):
         form = UserRegisterForm()
 
     return render(request, 'accounts/register.html', {'form': form})
+
+@login_required
+def profile_update_view(request):
+    if request.method == 'POST':
+        user_form = UserUpdateForm(request.POST, instance=request.user)
+        profile_form = CustomUserUpdateForm(request.POST, request.FILES, instance=request.user.customuser)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            return redirect('profile')
+    else:
+        user_form = UserUpdateForm(instance=request.user)
+        profile_form = CustomUserUpdateForm(instance=request.user.customuser)
+
+    context = {
+        'user_form': user_form,
+        'profile_form': profile_form,
+        'profile': request.user.customuser,
+    }
+    return render(request, 'accounts/profile.html', context)
+
+@login_required
+def delete_account(request):
+    if request.method == 'POST':
+        user = request.user
+        user.delete()
+        messages.success(request, 'Your account has been deleted.')
+        return redirect('ecommerce')  # Change 'home' to your home or login page
+    return redirect('profile')  # If GET request, do nothing
+
+

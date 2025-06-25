@@ -18,9 +18,9 @@
                                 <img src="{{ item.product.product_image.url }}" alt="{{ item.product.product_name }}" class="img-fluid" width="150" height="150">
                                 <div class="quantity-wrapper">
                                     <div class="quantity-selector mt-1">
-                                      <button class="increase" data-product-id="{{ item.product.id }}">+</button>
-                                      <input type="text" class="quantity" data-product-id="{{ item.product.id }}" value="{{ item.quantity }}">
                                       <button class="decrease" data-product-id="{{ item.product.id }}">−</button>
+                                      <input type="text" class="quantity" data-product-id="{{ item.product.id }}" value="{{ item.quantity }}">
+                                      <button class="increase" data-product-id="{{ item.product.id }}">+</button>
                                     </div>
                                   </div>                                                                    
                             </div>
@@ -36,7 +36,7 @@
                     </div>
                 {% endfor %}
                 <div class="order-footer">
-                  <a href="" class="place-order">Place Order</a>
+                  <a href="{% url 'checkout' %}" class="place-order">Place Order</a>
                 </div>
             </div>
             

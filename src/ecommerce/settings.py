@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'orders',
     'payments',
     'users',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

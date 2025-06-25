@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Checkout</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .section { border: 1px solid #ccc; margin-bottom: 10px; border-radius: 5px; }
+    .section-header { background: #2874f0; color: white; padding: 10px; cursor: pointer; }
+    .section-body { display: none; padding: 15px; }
+    .section.active .section-body { display: block; }
+    .continue-btn { background: #ff5722; color: white; border: none; padding: 8px 20px; margin-top: 10px; }
+  </style>
+</head>
+<body class="bg-light">
+
+<div class="container my-4">
+  <div class="section active" id="section-login">
+    <div class="section-header">1 LOGIN OR SIGNUP</div>
+    <div class="section-body">
+      {% if user.is_authenticated %}
+        <p> <strong>{{ user.username }}</strong> {{ user.phone_number }}</p>
+        <button class="continue-btn" onclick="goTo('section-address')">Continue</button>
+      {% else %}
+        <input type="text" class="form-control" placeholder="Enter Email / Mobile">
+        <button class="continue-btn">Continue</button>
+        <p class="text-muted mt-2">Please login to continue.</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- 2. DELIVERY ADDRESS -->
+  <div class="section" id="section-address">
+    <div class="section-header">2 DELIVERY ADDRESS</div>
+    <div class="section-body">
+      <textarea class="form-control" placeholder="Enter delivery address..."></textarea>
+      <button class="continue-btn" onclick="goTo('section-summary')">Continue</button>
+    </div>
+  </div>
+
+  <!-- 3. ORDER SUMMARY -->
+  <div class="section" id="section-summary">
+    <div class="section-header">3 ORDER SUMMARY</div>
+    <div class="section-body">
+      {% for item in cart_products %}
+        <div class="d-flex justify-content-between">
+          <span>{{ item.product.product_name|truncatewords:5 }}</span>
+          <span>₹{{ item.product.discounted_price }} × {{ item.quantity }}</span>
+        </div>
+      {% endfor %}
+      <hr>
+      <div class="d-flex justify-content-between">
+        <strong>Total</strong>
+        <strong>₹{{ cart_products|length|add:"0" }}</strong>
+      </div>
+      <button class="continue-btn" onclick="goTo('section-payment')">Continue</button>
+    </div>
+  </div>
+
+  <!-- 4. PAYMENT OPTIONS -->
+  <div class="section" id="section-payment">
+    <div class="section-header">4 PAYMENT OPTIONS</div>
+    <div class="section-body">
+      <p>Select your payment method:</p>
+      <ul>
+        <li><input type="radio" name="payment" checked> Cash on Delivery</li>
+        <li><input type="radio" name="payment"> UPI</li>
+        <li><input type="radio" name="payment"> Debit / Credit Card</li>
+      </ul>
+      <button class="continue-btn">Place Order</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function goTo(sectionId) {
+  document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+  document.getElementById(sectionId).classList.add('active');
+}
+</script>
+
+</body>
+</html>
