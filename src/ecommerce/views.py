@@ -6,8 +6,8 @@ def ecommerce(request, category=None):
     first_category = categories.first()
 
     if category:
-        products = index_product_details.objects.filter(product_categorys__name=category)
+        products = index_product_details.objects.filter(product_category__name=category)
     else:
-        products = index_product_details.objects.filter(product_categorys=first_category) if first_category else []
+        products = index_product_details.objects.filter(product_category=first_category) if first_category else []
 
     return render(request, 'index.html', {'products': products, 'categories': categories, 'first_category': first_category})

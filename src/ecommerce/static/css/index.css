@@ -49,4 +49,47 @@
       flex: 0 0 auto;
     }
   }
+.product-banner {
+    position: relative;
+    overflow: visible;
+}
+
+#productCarousel .carousel-control-prev,
+#productCarousel .carousel-control-next {
+    width: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+#productCarousel .carousel-control-prev {
+    left: -30px;
+}
+
+#productCarousel .carousel-control-next {
+    right: -30px;
+}
+.category-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.category-image {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+}
+
+.category-name {
+    font-size: 14px;
+    color: black;
+    font-weight: 500;
+}
+
+
+
+
+
   

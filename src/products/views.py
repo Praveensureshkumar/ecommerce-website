@@ -9,5 +9,10 @@ def full_product(request,product_id):
     return render(request,'products/product_detail.html',{'product':product,'product_highlights_list':product_highlights_list,'product_size_list':product_size_list}) 
 
 def home(request):
-    slides = Slide.objects.all()[:3] 
-    return render(request, 'home.html', {'slides': slides})  
+    slides = Slide.objects.all()[:3]
+    products = index_product_details.objects.all()[:5]  # Fetch top 5 products for banner
+
+    return render(request, 'home.html', {
+        'slides': slides,
+        'products': products
+    })
