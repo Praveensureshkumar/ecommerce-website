@@ -23,6 +23,7 @@ from ecommerce.views import *
 from products.views import *
 from orders.views import *
 from accounts.views import *
+from dashboard.views import *
 import accounts
 
 urlpatterns = [

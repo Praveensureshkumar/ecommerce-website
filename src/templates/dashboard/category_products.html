@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Products in {{ category_name }}</h2>
+
+    {% if products %}
+    <form method="post" action="{% url 'update_banner_order' %}">
+        {% csrf_token %}
+        <table class="table table-bordered align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Offer Price</th>
+                    <th>Banner Order</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td>
+                        <img src="{{ product.product_image.url }}" alt="{{ product.product_name }}" width="50" height="50" style="object-fit: cover;">
+                    </td>
+                    <td>{{ product.product_name|slice:":10" }}</td>
+                    <td>₹{{ product.product_offer_price }}</td>
+                    <td style="width: 120px;">
+                        <input type="hidden" name="product_ids" value="{{ product.product_id }}">
+                        <input type="number" name="banner_order_{{ product.product_id }}" value="{{ product.banner_order }}" class="form-control form-control-sm">
+                    </td>
+                    <td>
+                        <a href="{% url 'edit_product' product.product_id %}" class="btn btn-sm btn-primary">Edit</a>
+                        <a href="{% url 'delete_product' product.product_id %}" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <button type="submit" class="btn btn-success">Update Banner Orders</button>
+    </form>
+    {% else %}
+    <p>No products found in this category.</p>
+    {% endif %}
+</div>
+{% endblock %}
