@@ -38,7 +38,7 @@ label {
     font-weight: bold;
 }
 
-input {
+input.form-control {
     flex: 1;  /* Takes remaining space */
     padding: 8px;
     border: 1px solid #ccc;

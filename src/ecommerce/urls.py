@@ -28,6 +28,7 @@ import accounts
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+# Root URL patterns exposing app routes and top-level views
     path('accounts/',include('accounts.urls')),
     path('dashboard/', include('dashboard.urls')),
     path('ecommerce/',ecommerce,name='ecommerce'),

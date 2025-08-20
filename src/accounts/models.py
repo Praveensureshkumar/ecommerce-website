@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 
+# Profile extension that stores additional user information for the site
 class CustomUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     full_address = models.TextField(null=True, blank=True)
@@ -20,6 +21,7 @@ class CustomUser(models.Model):
     def __str__(self):
         return self.user.username
     
+# Delivery address model linked to a CustomUser for storing multiple addresses
 class Address(models.Model):
     custom_user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='addresses')
     name = models.CharField(max_length=50, default='Home')

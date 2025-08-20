@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from products.models import *
-# Create your views here.
+
+# Render the main ecommerce listing or a category-specific product list
 def ecommerce(request, category=None):
     categories = product_category.objects.all().order_by('order_number')
     first_category = categories.first()

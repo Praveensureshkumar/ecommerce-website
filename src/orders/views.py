@@ -1,3 +1,4 @@
+# Import required modules and models
 from django.shortcuts import render, get_object_or_404, redirect
 from orders.models import Cart, CartProduct
 from products.models import index_product_details
@@ -6,6 +7,7 @@ from datetime import datetime, timedelta
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
+# Add a product to the user's or session cart and increment quantity if present
 def add_to_cart(request, product_id):
     product = get_object_or_404(index_product_details, product_id=product_id)
     cart = None
@@ -23,9 +25,10 @@ def add_to_cart(request, product_id):
     if not created:
         cart_item.quantity += 1
         cart_item.save()
-
+        
     return redirect('cart')
 
+# Display the current user's or session cart with items and estimated delivery
 def cart(request):
     cart = None
     if request.user.is_authenticated:
@@ -38,6 +41,7 @@ def cart(request):
     delivery_date = datetime.today() + timedelta(days=5)
     return render(request, 'orders/cart.html', {'cart_items': cart_items, 'delivery_date': delivery_date})
 
+# Remove a specific item from the user's or session cart
 def remove_cart(request, cart_item_id):
     cart = None
     if request.user.is_authenticated:
@@ -50,10 +54,13 @@ def remove_cart(request, cart_item_id):
     return redirect('cart')
 
 @login_required
+# Render checkout page populated with user profile and cart items
 def checkout(request):
     custom_user = CustomUser.objects.filter(user=request.user).first()
     return render(request, 'checkout.html', {'custom_user': custom_user})
 
+
+# Alternate checkout view that shows cart products for review
 def checkout(request):
     cart = Cart.objects.filter(user=request.user).first()
     cart_products = CartProduct.objects.filter(cart=cart) if cart else []

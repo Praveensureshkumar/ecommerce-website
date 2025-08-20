@@ -6,6 +6,7 @@ from django.contrib import messages
 from accounts.models import *
 from django.contrib.auth.decorators import login_required
 
+# Render and process the login form to authenticate users
 def login_view(request):
     form = LoginForm()
 
@@ -23,10 +24,12 @@ def login_view(request):
 
     return render(request, 'accounts/login.html', {'form': form})
 
+# Log the current user out and redirect to the store
 def logout_view(request):
     logout(request)
     return redirect('ecommerce')
 
+# Handle new user registration and create an associated CustomUser
 def register_user(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
@@ -45,6 +48,7 @@ def register_user(request):
     return render(request, 'accounts/register.html', {'form': form})
 
 @login_required
+# Allow authenticated users to update their User and CustomUser profile
 def profile_update_view(request):
     if request.method == 'POST':
         user_form = UserUpdateForm(request.POST, instance=request.user)
@@ -66,6 +70,7 @@ def profile_update_view(request):
     return render(request, 'accounts/profile.html', context)
 
 @login_required
+# Delete the authenticated user's account when requested via POST
 def delete_account(request):
     if request.method == 'POST':
         user = request.user

@@ -1,3 +1,4 @@
+
 """
 Django settings for ewebsite project.
 
@@ -10,21 +11,24 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+# Import required modules
 from pathlib import Path
 import pymysql
+
+# Set PyMySQL version and install as MySQLdb for Django compatibility
 pymysql.version_info=(1,5,6,"final",0)
 pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 import os
+
+# Template and static directories for different apps
 TEMPLATES_DIR=os.path.join(BASE_DIR,'templates')
 TEMPLATES_DIR_ECOMMERCE=os.path.join(os.path.join(BASE_DIR,'ecommerce'),'static')
 TEMPLATES_DIR_ACCOUNTS=os.path.join(os.path.join(BASE_DIR,'accounts'),'static')
 TEMPLATES_DIR_PRODUCTS=os.path.join(os.path.join(BASE_DIR,'products'),'static')
 TEMPLATES_DIR_ORDERS=os.path.join(os.path.join(BASE_DIR,'orders'),'static')
-
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -35,6 +39,7 @@ SECRET_KEY = 'django-insecure-s3x_dbjj3b7$h9rz2ettb)xrxr%_$ibe7^%$4pb5ft380+5z9k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# Hosts/domain names that are valid for this site
 ALLOWED_HOSTS = []
 
 
