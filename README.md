@@ -5,7 +5,6 @@ This project features real-time search, secure authentication, order processing 
 
 ## 🚀 Features
 
-- Real-time Search using Elasticsearch (30% faster search experience)
 - Secure User Authentication with Django
 - Product & Order Management backed by MySQL
 - Custom Admin Dashboard to streamline backend operations (reduced admin workload by 40%)
@@ -21,13 +20,16 @@ This project features real-time search, secure authentication, order processing 
 
 ## 📸 Screenshots
 ## 🏠 Homepage
-![Screenshot](./assets/Homepage.png)
+![Screenshot](./src/assets/Homepage.png)
 
 ## 📄 Product Details
+![Screenshot](./src/assets/ProductDetails.png)
 
 ## 🛒 Cart
+![Screenshot](./src/assets/Cart.png)
 
 ## 💳 Checkout
+![Screenshot](./src/assets/Checkout.png)
 
 ## ⚙️ Setup Instructions
 
