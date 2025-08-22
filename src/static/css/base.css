@@ -23,8 +23,8 @@ ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(226, 217, 217);
-    padding: 10px 100px;
+    background-color: #e9e5e5; /* slightly adjusted for contrast */
+    padding: 10px 60px;
 }
 html, body {
     height: 100%;
@@ -51,6 +51,23 @@ html, body {
 
 .nav-link li {
     position: relative;
+}
+
+/* Improve keyboard focus and link contrast */
+.nav-link a {
+    color: #111;
+    text-decoration: none;
+    padding: 6px 8px;
+    border-radius: 4px;
+}
+
+.nav-link a:focus, .nav-link a:hover {
+    background-color: rgba(11,94,215,0.08);
+    outline: none;
+}
+
+.logo img {
+    height: 42px;
 }
 
 .dropdown-content {

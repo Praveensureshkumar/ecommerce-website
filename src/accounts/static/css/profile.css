@@ -1,11 +1,34 @@
 body{
-    background-color: rgb(226, 217, 217);
+    background-color: #f3f4f6;
 }
-.profile_pic{
-    height: 300px;
-    width: 300px;
+.profile-avatar{
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 8px solid #fff;
+    box-shadow: 0 14px 40px rgba(16,24,40,0.12);
+    display: inline-block;
+    /* lift the avatar so it overlaps the top of the card for a modern profile look */
+    margin-top: -60px;
 }
-.home-btn{
-    margin-top: 100px;
-    
+
+
+.card {
+    border: none;
+}
+
+.profile-card .btn-outline-secondary {
+    border-radius: 8px;
+}
+
+/* Ensure the left column provides space so the avatar can overlap neatly */
+.col-lg-4.text-center.border-end {
+    position: relative;
+    padding-top: 3.5rem; /* creates breathing room above the avatar on larger screens */
+}
+
+@media (max-width: 768px) {
+    .profile-avatar { width: 120px; height: 120px; margin-top: -40px; border-width:6px; }
+    .col-lg-4.text-center.border-end { padding-top: 1.25rem; }
 }

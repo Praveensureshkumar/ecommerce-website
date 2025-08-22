@@ -96,3 +96,51 @@
     margin-left: auto;
     margin-right: auto;
 }
+/* Hero text and CTA improvements */
+#productCarousel .carousel-item h3 {
+    color: #0b5ed7; /* stronger blue for headline */
+}
+
+#productCarousel .carousel-item h4 {
+    color: #111; /* darker price color for contrast */
+}
+
+#productCarousel .carousel-item .btn {
+    background-color: #0b5ed7; /* bootstrap primary blue */
+    border-color: #0b5ed7;
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Slightly larger banner image on wide screens */
+@media (min-width: 992px) {
+    .banner-image { height: 180px; }
+}
+
+/* Improve carousel control hit area and visibility */
+#productCarousel .carousel-control-prev, #productCarousel .carousel-control-next {
+    width: 48px;
+    height: 48px;
+    background: rgba(255,255,255,0.85);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#productCarousel .carousel-control-prev:focus, #productCarousel .carousel-control-next:focus {
+    outline: 3px solid rgba(11,94,215,0.25);
+    outline-offset: 3px;
+}
+
+/* Ensure carousel icons are centered inside controls */
+#productCarousel .carousel-control-prev .bi, #productCarousel .carousel-control-next .bi {
+    font-size: 1.4rem !important;
+    color: #111 !important;
+}
+
+/* Improve product card focus state for keyboard users */
+.card:focus-within {
+    box-shadow: 0 6px 18px rgba(11,94,215,0.12);
+    transform: none;
+}

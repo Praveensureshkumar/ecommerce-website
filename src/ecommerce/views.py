@@ -17,3 +17,6 @@ def ecommerce(request, category=None):
                                           'categories': categories, 
                                           'first_category': first_category,
                                           'banner_products': banner_products,})
+
+def contact(request):
+    return render(request, 'accounts/contact.html')

@@ -28,10 +28,11 @@ import accounts
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-# Root URL patterns exposing app routes and top-level views
+    # Root URL patterns exposing app routes and top-level views
     path('accounts/',include('accounts.urls')),
     path('dashboard/', include('dashboard.urls')),
     path('ecommerce/',ecommerce,name='ecommerce'),
+    path('ecommerce/contact/',contact,name='contact'),
     path('ecommerce/<str:category>/',ecommerce,name='category_products'),
     path('full_product/<int:product_id>/',full_product,name='full_product'),
     path('add_to_cart/<int:product_id>/', add_to_cart, name='add_to_cart'),

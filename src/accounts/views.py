@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from accounts.models import *
 from django.contrib.auth.decorators import login_required
+from django.core.files.storage import default_storage
 
 # Render and process the login form to authenticate users
 def login_view(request):

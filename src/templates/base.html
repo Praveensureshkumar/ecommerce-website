@@ -19,7 +19,6 @@
             </div>
             <ul class="nav-link">
                 <li><a href="{% url 'ecommerce' %}">Home</a></li>
-                <li><a href="#">Product</a></li>
                 {% if user.is_authenticated %}
                 <li class="dropdown">
                     <a href="#" class="dropbtn">Welcome! {{ user.username }}</a>
@@ -29,8 +28,7 @@
                     </div>
                 </li>
                 {% else %}
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
                 <li><a href="{% url 'accounts:login_view' %}">Login</a></li>
                 {% endif %}
                 <li style="margin-right: 25px;"><a href="{% url 'cart' %}"><i class="bi bi-cart-fill"></i></a></li>  
