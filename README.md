@@ -1,4 +1,4 @@
-# 🛒 E-Commerce Web Application
+## 🛒 E-Commerce Web Application
 
 An end-to-end E-Commerce platform built using Django, MySQL, Elasticsearch and JavaScript.  
 This project features real-time search, secure authentication, order processing and a custom admin dashboard.
@@ -21,6 +21,7 @@ This project features real-time search, secure authentication, order processing 
 
 ## 📸 Screenshots
 ## 🏠 Homepage
+![Screenshot](./assets/Homepage.png)
 
 ## 📄 Product Details
 
