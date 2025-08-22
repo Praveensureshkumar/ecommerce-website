@@ -17,7 +17,16 @@ This project features real-time search, secure authentication, order processing 
 - Backend: Django (Python)  
 - Database: MySQL  
 - Search Engine: Elasticsearch  
-- Frontend: HTML, CSS, JavaScript 
+- Frontend: HTML, CSS, JavaScript
+
+## 📸 Screenshots
+## 🏠 Homepage
+
+## 📄 Product Details
+
+## 🛒 Cart
+
+## 💳 Checkout
 
 ## ⚙️ Setup Instructions
 
